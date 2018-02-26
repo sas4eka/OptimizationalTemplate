@@ -9,19 +9,19 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		String[] testnames = { "example" };
+		Visualizer v = new Visualizer();
 		for (String testname : testnames) {
-			runTest(testname, 1000, new RandomSolver(), new RandomOptimizer());
+			runTest(v, testname, 1000, new RandomSolver(), new RandomOptimizer());
 		}
 		System.out.println("done!");
 	}
 
-	static void runTest(String testname, int times, Solver solver, Optimizer optimizer) throws IOException {
+	static void runTest(Visualizer v, String testname, int times, Solver solver, Optimizer optimizer) throws IOException {
 		Input input = new Input(testname);
 		input.readFromFile();
 
 		Answer bestAnswer = readBestAnswer(input);
 
-		Visualizer v = new Visualizer();
 		v.setFrame(getInputFrame(input));
 
 		if (SHOW_ONLY_INPUT) {
