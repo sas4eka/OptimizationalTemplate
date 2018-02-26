@@ -16,7 +16,8 @@ public class Main {
 		System.out.println("done!");
 	}
 
-	static void runTest(Visualizer v, String testname, int times, Solver solver, Optimizer optimizer) throws IOException {
+	static void runTest(Visualizer v, String testname, int times, Solver solver, Optimizer optimizer)
+			throws IOException, InterruptedException {
 		Input input = new Input(testname);
 		input.readFromFile();
 
@@ -25,9 +26,9 @@ public class Main {
 		v.setFrame(getInputFrame(input));
 
 		if (SHOW_ONLY_INPUT) {
-			if (bestAnswer.getScore() > 0) {
-				v.setFrame(getSolutionFrame(input, bestAnswer));
-			}
+			v.setTitle(testname);
+			v.setFrame(getInputFrame(input));
+			Thread.sleep(2000);
 		} else {
 			for (int t = 0; t < times; t++) {
 				String status = testname + ": " + t + " of " + times;
