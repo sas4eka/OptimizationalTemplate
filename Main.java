@@ -5,16 +5,17 @@ import java.io.IOException;
 public class Main {
 	static final boolean SHOW_ONLY_INPUT = true;
 	static final boolean SHOW_ALL_SOLUTIONS = true;
+	static final boolean OPTIMIZE_SOLUTIONS = false;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		String[] testnames = { "example" };
 		for (String testname : testnames) {
-			runTest(testname, 1000, new RandomSolver());
+			runTest(testname, 1000, new RandomSolver(), new RandomOptimizer());
 		}
 		System.out.println("done!");
 	}
 
-	static void runTest(String testname, int times, Solver solver) throws IOException {
+	static void runTest(String testname, int times, Solver solver, Optimizer optimizer) throws IOException {
 		Input input = new Input(testname);
 		input.readFromFile();
 
@@ -32,6 +33,18 @@ public class Main {
 				String status = testname + ": " + t + " of " + times;
 				v.setTitle(status);
 				Answer answer = solver.solve(input);
+				if (OPTIMIZE_SOLUTIONS) {
+					while (true) {
+						int oldScore = answer.getScore();
+						if (optimizer.optimize(answer)) {
+							answer.invalidateScore();
+							System.out.println(
+									answer.testname + " WAS OPTIMIZED: " + oldScore + "->" + answer.getScore());
+						} else {
+							break;
+						}
+					}
+				}
 				if (answer.getScore() > bestAnswer.getScore()) {
 					onBestAnswerUpdate(bestAnswer, answer);
 					bestAnswer = answer;
