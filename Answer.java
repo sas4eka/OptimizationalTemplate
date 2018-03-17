@@ -56,7 +56,7 @@ public class Answer {
 			// TODO: read answer from file
 			reader.close();
 		} catch (FileNotFoundException e) {
-			System.err.println("File " + filename + " not found");
+			System.err.println("File " + filename + " not found, empty answer created.");
 		}
 	}
 }
