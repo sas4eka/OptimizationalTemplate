@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Merge {
+	// TODO: are these formats correct?
 	static final String inputFormat = ".in";
 	static final String outputFormat = ".out";
 

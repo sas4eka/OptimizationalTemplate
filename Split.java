@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Split {
+	// TODO: is this format correct?
 	static final String inputFormat = ".in";
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
