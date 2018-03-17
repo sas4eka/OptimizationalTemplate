@@ -5,13 +5,15 @@ public class Split {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		String task = Settings.taskName;
 		String inputFormat = Settings.inputFormat;
+		String inDir = Settings.inputDir;
+		String partsDir = Settings.partsDir;
 		for (int k = 0; k <= 10; k++) {
-			String testfile = String.format("%s%02d%s", task, k, inputFormat);
+			String testfile = String.format("%s%s%02d%s", inDir, task, k, inputFormat);
 			Reader reader = new Reader(testfile);
 			int tests = reader.nextInt();
 			for (int t = 0; t < tests; t++) {
-				String partFile = String.format("%s%02d_%04d%s", task, k, t, inputFormat);
-				System.out.print(String.format("\"%s%02d_%04d\"", task, k, t) + ", ");
+				String partFile = String.format("%s%s%02d_%04d%s", partsDir, task, k, t, inputFormat);
+				System.out.print(String.format("\"%s%s%02d_%04d\"", partsDir, task, k, t) + ", ");
 				PrintWriter partWriter = new PrintWriter(partFile);
 
 				// TODO: read from reader and write to separate writers
