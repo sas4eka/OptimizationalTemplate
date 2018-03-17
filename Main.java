@@ -55,7 +55,7 @@ public class Main {
 						}
 					}
 				}
-				int sign = input.minimizeScore ? -1 : 1;
+				int sign = Settings.minimizeScore ? -1 : 1;
 				if (sign * answer.getScore() > sign * bestAnswer.getScore()) {
 					onBestAnswerUpdate(bestAnswer, answer);
 					bestAnswer = answer;
