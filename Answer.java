@@ -6,7 +6,7 @@ public class Answer {
 	// TODO: fields
 	Input input;
 	String testname;
-	private int score;
+	private long score;
 
 	public Answer(Input input) {
 		// TODO: init fields of empty answer
@@ -21,7 +21,7 @@ public class Answer {
 		// TODO: update score
 	}
 
-	int getScore() {
+	long getScore() {
 		if (score == -1) {
 			updateScore();
 		}
@@ -44,7 +44,7 @@ public class Answer {
 	}
 
 	void printWithScore() throws FileNotFoundException {
-		String filename = String.format("%s%09d.out", testname, score);
+		String filename = String.format("%s_%018d.out", testname, score);
 		print(filename);
 	}
 

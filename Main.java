@@ -36,7 +36,7 @@ public class Main {
 				Answer answer = solver.solve(input);
 				if (OPTIMIZE_SOLUTIONS) {
 					while (true) {
-						int oldScore = answer.getScore();
+						long oldScore = answer.getScore();
 						if (optimizer.optimize(answer)) {
 							answer.invalidateScore();
 							System.out.println(
