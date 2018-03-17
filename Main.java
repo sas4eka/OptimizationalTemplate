@@ -12,12 +12,13 @@ public class Main {
 		String[] testnames = { "example" };
 		Visualizer v = new Visualizer();
 		for (String testname : testnames) {
-			runTest(v, testname, 1000, new RandomSolver(), new RandomOptimizer());
+			long timePerTest = 1000; // ms
+			runTest(v, testname, timePerTest, new RandomSolver(), new RandomOptimizer());
 		}
 		System.out.println("done!");
 	}
 
-	static void runTest(Visualizer v, String testname, int times, Solver solver, Optimizer optimizer)
+	static void runTest(Visualizer v, String testname, long timePerTest, Solver solver, Optimizer optimizer)
 			throws IOException, InterruptedException {
 		Input input = new Input(testname);
 		input.readFromFile();
@@ -31,9 +32,8 @@ public class Main {
 			v.setFrame(getInputFrame(input));
 			Thread.sleep(2000);
 		} else {
-			for (int t = 0; t < times; t++) {
-				String status = testname + ": " + t + " of " + times;
-				v.setTitle(status);
+			long start = System.currentTimeMillis();
+			while (System.currentTimeMillis() - start > timePerTest) {
 				Answer answer = solver.solve(input);
 				if (OPTIMIZE_SOLUTIONS) {
 					while (true) {
