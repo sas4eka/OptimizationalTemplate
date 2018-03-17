@@ -12,7 +12,7 @@ public class Split {
 			int tests = reader.nextInt();
 			for (int t = 0; t < tests; t++) {
 				String partFile = String.format("%s%s%02d_%04d%s", dataDir, task, k, t, inputFormat);
-				System.out.print(String.format("\"%s%s%02d_%04d\"", dataDir, task, k, t) + ", ");
+				System.out.print(String.format("\"%s%02d_%04d\"", task, k, t) + ", ");
 				PrintWriter partWriter = new PrintWriter(partFile);
 
 				// TODO: read from reader and write to separate writers
