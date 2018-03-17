@@ -3,31 +3,39 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Main {
-	static final boolean SHOW_ONLY_INPUT = true;
-	static final boolean SHOW_ALL_SOLUTIONS = true;
-	static final boolean OPTIMIZE_SOLUTIONS = false;
+	static boolean SHOW_VISUALIZATION = false;
+	static boolean SHOW_ONLY_INPUT = true;
+	static boolean SHOW_ALL_SOLUTIONS = true;
+
+	static boolean OPTIMIZE_SOLUTIONS = false;
+
+	static Visualizer v;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		// TODO: put all test names
 		String[] testnames = { "example" };
-		Visualizer v = new Visualizer();
+		if (SHOW_VISUALIZATION) {
+			v = new Visualizer();
+		}
 		for (String testname : testnames) {
 			long timePerTest = 1000; // ms
-			runTest(v, testname, timePerTest, new RandomSolver(), new RandomOptimizer());
+			runTest(testname, timePerTest, new RandomSolver(), new RandomOptimizer());
 		}
 		System.out.println("done!");
 	}
 
-	static void runTest(Visualizer v, String testname, long timePerTest, Solver solver, Optimizer optimizer)
+	static void runTest(String testname, long timePerTest, Solver solver, Optimizer optimizer)
 			throws IOException, InterruptedException {
 		Input input = new Input(testname);
 		input.readFromFile();
 
 		Answer bestAnswer = readBestAnswer(input);
 
-		v.setFrame(getInputFrame(input));
+		if (SHOW_VISUALIZATION) {
+			v.setFrame(getInputFrame(input));
+		}
 
-		if (SHOW_ONLY_INPUT) {
+		if (SHOW_VISUALIZATION && SHOW_ONLY_INPUT) {
 			v.setTitle(testname);
 			v.setFrame(getInputFrame(input));
 			Thread.sleep(2000);
@@ -51,9 +59,11 @@ public class Main {
 				if (sign * answer.getScore() > sign * bestAnswer.getScore()) {
 					onBestAnswerUpdate(bestAnswer, answer);
 					bestAnswer = answer;
-					v.setFrame(getSolutionFrame(input, answer));
+					if (SHOW_VISUALIZATION) {
+						v.setFrame(getSolutionFrame(input, answer));
+					}
 				}
-				if (SHOW_ALL_SOLUTIONS) {
+				if (SHOW_VISUALIZATION && SHOW_ALL_SOLUTIONS) {
 					v.setFrame(getSolutionFrame(input, answer));
 				}
 				// System.out.println(answer.getScore());
