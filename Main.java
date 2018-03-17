@@ -66,8 +66,6 @@ public class Main {
 				if (SHOW_VISUALIZATION && SHOW_ALL_SOLUTIONS) {
 					v.setFrame(getSolutionFrame(input, answer));
 				}
-				// System.out.println(answer.getScore());
-				// Thread.sleep(10);
 			}
 		}
 	}
@@ -108,7 +106,7 @@ public class Main {
 		// return frame;
 	}
 
-	static private BufferedImage getSolutionFrame(Input input, Answer s) {
+	static private BufferedImage getSolutionFrame(Input input, Answer answer) {
 		return new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
 		// int n = input.n;
 		// int m = input.m;
