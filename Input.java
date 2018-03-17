@@ -13,7 +13,7 @@ public class Input {
 	}
 
 	void readFromFile() throws IOException {
-		String filename = testname + ".in";
+		String filename = testname + Settings.inputFormat;
 		Reader reader = new Reader(filename);
 		// TODO: read input
 		reader.close();

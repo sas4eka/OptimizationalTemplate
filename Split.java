@@ -2,12 +2,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Split {
-	// TODO: is this format correct?
-	static final String inputFormat = ".in";
-	// TODO: set task name
-	static final String task = "example";
-
 	public static void main(String[] args) throws NumberFormatException, IOException {
+		String task = Settings.taskName;
+		String inputFormat = Settings.inputFormat;
 		for (int k = 0; k <= 10; k++) {
 			String testfile = String.format("%s%02d%s", task, k, inputFormat);
 			Reader reader = new Reader(testfile);

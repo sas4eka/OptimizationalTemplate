@@ -2,13 +2,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Merge {
-	// TODO: are these formats correct?
-	static final String inputFormat = ".in";
-	static final String outputFormat = ".out";
-	// TODO: set task name
-	static final String task = "example";
-
 	public static void main(String[] args) throws NumberFormatException, IOException {
+		String task = Settings.taskName;
+		String inputFormat = Settings.inputFormat;
+		String outputFormat = Settings.outputFormat;
 		for (int k = 1; k <= 10; k++) {
 			String testfile = String.format("%s%02d%s", task, k, inputFormat);
 			Reader reader = new Reader(testfile);
