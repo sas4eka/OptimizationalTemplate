@@ -5,13 +5,14 @@ public class Merge {
 	// TODO: are these formats correct?
 	static final String inputFormat = ".in";
 	static final String outputFormat = ".out";
+	// TODO: set task name
+	static final String task = "example";
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
-		String task = "example";
 		for (int k = 1; k <= 10; k++) {
-			String testfile = String.format("%s%02d" + inputFormat, task, k);
+			String testfile = String.format("%s%02d%s", task, k, inputFormat);
 			Reader reader = new Reader(testfile);
-			PrintWriter writer = new PrintWriter(String.format("%s%02d" + outputFormat, task, k));
+			PrintWriter writer = new PrintWriter(String.format("%s%02d%s", task, k, outputFormat));
 			int tests = reader.nextInt();
 			for (int t = 0; t < tests; t++) {
 
@@ -21,7 +22,7 @@ public class Merge {
 				// reader.nextInt();
 				// }
 
-				String partFile = String.format("%s%02d_%04d" + outputFormat, task, k, t);
+				String partFile = String.format("%s%02d_%04d%s", task, k, t, outputFormat);
 				Reader partReader = new Reader(partFile);
 
 				// TODO: read answers from parts and merge them together
