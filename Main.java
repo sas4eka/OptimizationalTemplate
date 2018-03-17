@@ -8,6 +8,7 @@ public class Main {
 	static final boolean OPTIMIZE_SOLUTIONS = false;
 
 	public static void main(String[] args) throws InterruptedException, IOException {
+		// TODO: put all test names
 		String[] testnames = { "example" };
 		Visualizer v = new Visualizer();
 		for (String testname : testnames) {
