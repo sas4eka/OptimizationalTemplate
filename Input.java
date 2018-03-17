@@ -10,7 +10,7 @@ public class Input {
 	}
 
 	void readFromFile() throws IOException {
-		String filename = Settings.inputDir + testname + Settings.inputFormat;
+		String filename = Settings.dataDir + testname + Settings.inputFormat;
 		Reader reader = new Reader(filename);
 		// TODO: read input
 		reader.close();

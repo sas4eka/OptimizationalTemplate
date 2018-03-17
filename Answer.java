@@ -39,18 +39,18 @@ public class Answer {
 	}
 
 	void print() throws FileNotFoundException {
-		String filename = Settings.outputDir + testname + Settings.outputFormat;
+		String filename = Settings.dataDir + testname + Settings.outputFormat;
 		print(filename);
 	}
 
 	void printWithScore() throws FileNotFoundException {
-		String filename = String.format("%s%s_%018d%s", Settings.outputDir, testname, score, Settings.outputFormat);
+		String filename = String.format("%s%s_%018d%s", Settings.dataDir, testname, score, Settings.outputFormat);
 		print(filename);
 	}
 
 	void readFromFile() throws IOException {
 		invalidateScore();
-		String filename = Settings.outputDir + testname + Settings.outputFormat;
+		String filename = Settings.dataDir + testname + Settings.outputFormat;
 		try {
 			Reader reader = new Reader(filename);
 			// TODO: read answer from file

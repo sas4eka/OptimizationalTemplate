@@ -8,8 +8,6 @@ public class Settings {
 	static final String inputFormat = ".in";
 	static final String outputFormat = ".out";
 
-	// TODO: set input and output dirs followed by slashes
-	static final String inputDir = "";
-	static final String outputDir = "";
-	static final String partsDir = "parts/";
+	// TODO: set data dir followed by slash like "" or "data/"
+	static final String dataDir = "";
 }
