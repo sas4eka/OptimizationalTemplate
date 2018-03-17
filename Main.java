@@ -18,7 +18,7 @@ public class Main {
 			v = new Visualizer();
 		}
 		for (String testname : testnames) {
-			long timePerTest = 1000; // ms
+			long timePerTest = 10; // ms
 			runTest(testname, timePerTest, new RandomSolver(), new RandomOptimizer());
 		}
 		System.out.println("done!");
@@ -41,7 +41,7 @@ public class Main {
 			Thread.sleep(2000);
 		} else {
 			long start = System.currentTimeMillis();
-			while (System.currentTimeMillis() - start > timePerTest) {
+			while (System.currentTimeMillis() - start < timePerTest) {
 				Answer answer = solver.solve(input);
 				if (OPTIMIZE_SOLUTIONS) {
 					while (true) {
