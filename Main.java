@@ -46,7 +46,8 @@ public class Main {
 						}
 					}
 				}
-				if (answer.getScore() > bestAnswer.getScore()) {
+				int sign = input.minimizeScore ? -1 : 1;
+				if (sign * answer.getScore() > sign * bestAnswer.getScore()) {
 					onBestAnswerUpdate(bestAnswer, answer);
 					bestAnswer = answer;
 					v.setFrame(getSolutionFrame(input, answer));

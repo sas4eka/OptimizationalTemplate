@@ -1,6 +1,9 @@
 import java.io.IOException;
 
 public class Input {
+	// TODO: is it max or min task?
+	boolean minimizeScore = false;
+
 	String testname;
 	// TODO: input fields
 

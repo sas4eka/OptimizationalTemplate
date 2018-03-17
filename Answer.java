@@ -49,6 +49,7 @@ public class Answer {
 	}
 
 	void readFromFile() throws IOException {
+		invalidateScore();
 		String filename = testname + ".out";
 		try {
 			Reader reader = new Reader(filename);
@@ -56,7 +57,6 @@ public class Answer {
 			reader.close();
 		} catch (FileNotFoundException e) {
 			System.err.println("File " + filename + " not found");
-			score = 0;
 		}
 	}
 }
